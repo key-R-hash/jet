@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <title>Document</title>
+    <style>
+        img{
+            margin-left: calc(42% );
+            width: 900px;
+            margin-top: calc(30%);
+            transform:rotateX(110deg) ;
+        }
+        #jet{
+            perspective: 1350px;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            var scale = 1;
+            var marginleft = 0;
+            var rotatey = 0;
+            rotate = 110;
+                $(document).keydown(function(e){
+                    var code = e.keyCode;
+                    
+                    if(code == 38){
+                        scale +=  -0.1;
+                        rotate = 100;
+                    }
+                    if(code == 40){
+                        scale +=  0.1;
+                        rotate = 120;
+                    }
+                    if(code == 39){
+                        marginleft += -20;
+                        rotatey = 10;
+                    }
+                    if(code == 37){
+                        marginleft += 20;
+                        rotatey = -10;
+                    }
+
+                    console.log(marginleft);
+                    $("#img").css({
+                        "transform": "rotateX(" + rotate + "deg) scale(" + scale + ") rotateY(" + rotatey + "deg)", 
+                        "margin-left" : "calc(42% - " + marginleft + "px)"
+
+                    })
+
+                })
+                $(document).keyup(function(e){
+                    console.log(e.keyCode);
+                    var code = e.keyCode;
+                    var rotate;
+
+                    if(code == 38){
+                        rotate = 110;
+                    }
+                    if(code == 40){
+                        rotate = 110;
+                    }
+                    if(code == 39){
+                        rotatey = 0;
+                    }
+                    if(code == 37){
+                        rotatey = 0;
+                    }
+                    $("#img").css({
+                        "transform": "rotateX(" + rotate + "deg) scale(" + scale + ") rotateY(" + rotatey + "deg)"
+
+                    })
+                })
+        })
+    </script>
+</head>
+<body>
+    <div id='jet'>
+        <div id='je'>
+            <img id='img' src="jet.png" alt="">
+        </div>
+    </div>
+</body>
+</html>
