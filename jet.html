@@ -4,56 +4,577 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
     <title>Document</title>
     <style>
-        img{
-            margin-left: calc(42% );
-            width: 900px;
-            margin-top: calc(30%);
-            transform:rotateX(110deg) ;
-        }
-        #jet{
-            perspective: 1350px;
-        }
+body,html {
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px;
+}
+img#img{
+    margin-left: calc(42% );
+    width: 230px;
+    margin-top: calc(27%);
+    transform:rotateX(110deg) ;
+}
+img#gun{
+    position: absolute;
+    top: 11px;
+    width: 73px;
+    left: 21px;
+}
+p#numgun{
+    color: wheat;
+    font-size: 50px;
+    position: absolute;
+    top: -45px;
+    left: 168px       
+    }
+#jet{
+    perspective: 330px;
+}
+.shot{
+    border: 5px solid red;
+    background-color: red; 
+    transform: scale(0.2);
+    top: 2718px;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+.hearth1{
+    position: absolute;
+    right: 25px;  
+    width: 55px;
+    top: 0px;
+}
+.hearth2{
+    position: absolute;
+    right: 100px;  
+    width: 55px;
+    top: 0px;
+}
+.hearth3{
+    position: absolute;
+    right: 180px;  
+    width: 55px;
+    top: 0px;
+}
+#time{
+    position: absolute;
+    top: 0px;
+    margin-top: 42px;
+    right: calc(44%);
+    font-size: 49px;
+    color: white;
+    box-shadow: 0px 0px 50px 1px white;
+    border-bottom-left-radius: 220px;
+    border-bottom-right-radius: 220px;
+    padding: 16px;
+    padding-left: 75px;
+    padding-right: 70px;
+    z-index: 5;
+    background-color: black;
+}
+#level{
+    position: absolute;
+    top: 80px;
+    right: 30px;
+    font-size: 25px;
+    color: white;
+}
+.shot {
+animation:changeSize 300ms 1;
+}
+.bombom{
+    position: absolute;
+    width: 180px;
+    height: 120px;
+}
+.bom{
+    position: absolute;
+    width: 200px;
+    height: 250px;
+}
+#hearths{
+    margin-top: 40px  
+}
+#killimg{
+    position: absolute;
+    top: 75px;
+    left: 30px;
+    width: 50px;
+}
+.p{
+    display:inline
+}
+#numkill{
+    color: wheat;
+    font-size: 60px;
+    position: absolute;
+    top: 8px;
+    left: 166px;
+}
+#one-header{
+    padding: 23px;
+    z-index: 10;
+    top:0px;
+    left:0px;
+    position: absolute;
+    background-color: black;
+    width: 100%;
+}
+#two-header{
+    box-shadow: 0px 0px 50px 1px white;
+    padding: 23px;
+    z-index: 0;
+}
+.first{
+    display:inline;margin-top: 20px
+}
+#left{
+    height: 135px;
+    position: absolute;
+    z-index: 2;
+    box-shadow: 0px 0px 50px 1px white;
+    border-bottom-right-radius: 320px;
+    margin-top: -9px;
+    min-width: 290px;   
+    background-color: black;
+}
+#right{
+    height: 135px;
+    position: absolute;
+    right: 0px;
+    z-index: 1;
+    box-shadow: 0px 0px 50px 1px white;
+    border-bottom-left-radius: 320px;
+    margin-top: -9px;   
+    min-width: 290px;
+    background-color: black;
+}
+@keyframes changeSize {
+0% {transform: scale(1.4);}
+5% {transform: scale(1.2);}
+10% {transform: scale(1);}
+15% {transform: scale(0.9);}
+20% {transform: scale(0.8);}
+} 
+#animate-area	{ 
+    background-image: url(downd.jpg);
+    background-size: auto 900px;
+    animation: animatedBackground 3s linear infinite;
+}
+@keyframes animatedBackground {
+    from { background-position: 0 0; }
+    to { background-position: 0 900px; }
+}
+@keyframes shake {
+0% { transform: translate(1px, 1px) rotate(0deg); }
+10% { transform: translate(-1px, -2px) rotate(-1deg); }
+20% { transform: translate(-3px, 0px) rotate(1deg); }
+30% { transform: translate(3px, 2px) rotate(0deg); }
+40% { transform: translate(1px, -1px) rotate(1deg); }
+50% { transform: translate(-1px, 2px) rotate(-1deg); }
+60% { transform: translate(-3px, 1px) rotate(0deg); }
+70% { transform: translate(3px, 1px) rotate(-1deg); }
+80% { transform: translate(-1px, -1px) rotate(1deg); }
+90% { transform: translate(1px, 2px) rotate(0deg); }
+100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+.modal{
+    min-width: 400px;
+    min-height: 250px;
+    left: 50%;
+    top: 50%;
+    background-color: white;
+    position: absolute;
+    display: inline-block !important;
+    z-index: 1000;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: 5px;
+    animation: modal 1s forwards;
+    font-family: cursive;
+
+}
+@keyframes modal{
+    0%{transform: translateX(-50%) translateY(-50%) scale(0); opacity:0;}
+    100%{transform: translateX(-50%) translateY(-50%) scale(1); opacity:1;}
+}
+.modal-header{
+    padding: 10px;
+    background-color: #eeeeee;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: 1px solid #dadada;
+}
+.modal-footer{
+    position: absolute;
+    width: calc(100% - 20px);
+    bottom: 0px;
+    padding: 10px;
+    background-color: #eeeeee;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: 1px solid #dadada;
+}
+.modal-content{
+    padding: 10px
+}
+#modal-loos{
+    display: none;
+}
+.btn{
+    border: 0px;
+    border-radius: 4px;
+    background-color: #d4d4d4;
+    padding: 5px 10px 5px 10px;
+    color:black ;
+    transition-duration: 300ms;
+    cursor: pointer;
+}
+.btn:hover{
+    background-color: #3eca1b;
+    color:white;
+}
+
+.main::after{
+    content: '';
+    width:100%;
+    height:100%;
+    background-color: black;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    animation: main2 1s forwards;
+    z-index: 1001;
+}
+#modal-win{
+    display: none;
+}
+@keyframes main{
+    0%{transform: scale(1);}
+    100%{transform:  scale(2);}
+}
+@keyframes main2{
+    0%{opacity: 0;}
+    100%{opacity: 0.75;}
+}
     </style>
     <script>
         $(document).ready(function(){
+            if(localStorage.getItem("shot") == null){
+                var hh = 40
+            }else{
+                var hh = localStorage.getItem("shot")
+                $("#numgun").text(hh)
+            }
+            if(localStorage.getItem("kill") == null){
+                var r = 0;
+            }else{
+                var r = localStorage.getItem("kill");
+                $("#numkill").text(5 - r);
+            }
+            if(localStorage.getItem("hearth1") == null) {
+                var h = 0;
+            }else{
+                var h = localStorage.getItem("hearth1");
+                $(".hearth" + h).remove();
+                if(localStorage.getItem("hearth2") != null){
+                    var h = localStorage.getItem("hearth2");
+                    $(".hearth" + h).remove();
+                }
+            }
+            
+            var u = 0;
+            var n = 0;
             var scale = 1;
             var marginleft = 0;
             var rotatey = 0;
             rotate = 110;
+            var ml = $(document).width()/2;
+            if(localStorage.getItem("time") == null){
+                var a = 181;
+            }else{
+                a = localStorage.getItem("time");
+            }
+            var level = 3000;
+            // var d = 0;
+            var sh = true;
+            var msl = 0;
+            var clock = setInterval(function() {
+                a = a - 1
+                localStorage.setItem("time",a)
+                var min = a/60;
+                if(a == 0 && r == 10){
+                    clearInterval(mons);
+                    clearInterval(clock);
+                    modalwin();
+                }
+                if(a == 0 && r != 10){
+                    clearInterval(mons);
+                    clearInterval(clock);
+                    modalloos();
+                }
+                if (min ==  3){
+                    $("#time").html("03 : 00")
+                    console.log("ghahaha");
+                }
+                if(min == 2){
+                    $("#time").html("02 : 00")
+                    $("#level").text("Level 2")
+                    $("#animate-area").css({
+                        animation : "animatedBackground 2s linear infinite"
+                    })
+                    level = 2000;
+                }
+                if(min == 1){
+                    $("#time").html("01 : 00")
+                    $("#level").text("Level 3")
+                    $("#animate-area").css({
+                        animation : "animatedBackground 1s linear infinite"
+                    })
+                    level = 1000;
+
+                }
+                if(min > 1 && 2 > min){
+                    var c = a - 60
+                    c = format(c);
+                    $("#time").html("01 : " + c)
+
+                }
+                if(min < 1){
+                    c = format(a);
+                    $("#time").html("00 : " + c)
+                }
+                if(min > 2 && min != 3){
+                    var c = a - 120;
+                    c = format(c);
+                    $("#time").html("02 : " + c)
+                }
+
+            }, 1000)
+            function format(number){
+                if(number < 10){
+                    return "0" + number
+                }else{
+                    return number;
+                }
+            }
+            function delet(x){ 
+                $(".shot-" + x ).remove();
+                if(x == 40){                                   
+                    clearInterval(mons);
+                    clearInterval(clock);
+                    modalloos();
+                }
+            }
+            function shot(z,ml){
+                // console.log(ml);
+                console.log(  $(document ).width()/2 );
+            $(".shot-" + z ).css({
+                "left" : $(window).width()/2 - marginleft - 100,
+                "display" : "block",
+                "top" : "calc(75%)"
+                }).animate({
+                "top" : "250px",
+                "left" :  ml + "px",
+                },500,function(){
+                    delet(z);
+                })
+            }
+            function numgun(n){
+                m = hh - n;
+                console.log(m);
+                localStorage.setItem("shot",m)
+                $("#numgun").html(m)
+            }
+            function makemonster(){
+                u++;
+                var rand = Math.random();
+                var ary = ["1","2","3","4"];
+                var leg = Math.floor(ary.length * rand) ;
+                $("#monster").append('<img class=monster' + u + ' src=' + ary[leg] + '.png  >');
+                amimatemonster(u);
+                // console.log(leg + "leg")
+
+            }
+            function modalloos(){
+                localStorage.clear();
+                var abs = h - 3
+                var numgun = $("#numgun").text();
+                var numkill = $("#numkill").text();
+                console.log(numgun);
+                $("#loos-shot").text(numgun);
+                $("#loos-kill").text(numkill);
+                $("#modal-loos").addClass("modal")
+                $("#loos-hearth").text(Math.abs(abs));
+                $("body>div:nth-child(1)").css({
+                    animation: "main 1s forwards"
+                }).addClass("main")                                                                    
+
+            }
+            function modalwin(){
+                localStorage.clear();
+                $("#modal-win").addClass("modal")
+                $("body>div:nth-child(1)").css({
+                    animation: "main 1s forwards"
+                }).addClass("main")
+            
+            }
+            var checkMonsterInterval;
+            function amimatemonster(u){
+                // console.log(".monster" + u)
+                var ra = Math.random();
+                var wdow = $(window).width()
+                var wd = wdow/7;
+                var one = wd;
+                var two = wd * 2;
+                var three = wd * 3;
+                var four = wd * 4;
+                var five = wd * 5;
+                var six = wd * 6;
+                var ar = [one,two,three,four,five,six];
+                var le = Math.floor(ar.length * ra) ;
+                clearInterval(checkMonsterInterval)
+                checkMonsterInterval = setInterval(function(){
+                    var monsterleft =  $(".monster" + u ).position().left;
+                    var monstertop =  $(".monster" + u ).position().top;
+                    var airplantop = $("#img").css("marginTop") ;
+                    var airplanleft = $("#img").css("marginLeft");
+                    var alp = parseInt(airplanleft) + 150
+                    var aln = parseInt(airplanleft) - 150
+                    var atp = 850
+                    var atn = 750
+                    if ($('.shot').length) {
+                        var shotleft =  $(".shot-" + n).position().left;
+                        var shottop =  $(".shot-" + n ).position().top;  
+                        // console.log(shotleft + "shotleft") 
+                        // console.log(shottop + "shottop")
+                        // console.log(monstertop + "monstertop")
+                        // console.log(monsterleft + "monsterleft")
+                        if((monstertop - 150 < shottop && shottop < monstertop + 150) && (monsterleft - 125 < shotleft && shotleft < monsterleft + 125)){
+                            r++;
+                            localStorage.setItem("kill",r);
+                            $("#numkill").text(5 - r);
+                            $(".monster" + u ).hide();
+                            $("#bombom").append('<img src="explode.png" class= bombom-' + r + '  ></div>');
+                            $(".bombom-"+ r).addClass("bombom");
+                            $(".bombom-"+ r).css({
+                                top : monstertop,
+                                left : monsterleft
+                            })
+                            setTimeout(function(){
+                                $('.bombom-'+ r).hide();
+                            },1000)
+                        }
+                        if(r == 5){
+                            clearInterval(mons);
+                            clearInterval(clock);
+                            modalwin();
+                        }
+                    }
+                    console.log(monstertop);
+                    if((atn < monstertop && monstertop < atp) && (aln < monsterleft && monsterleft < alp)){
+                        h++;
+                        console.log(h);                        
+
+                        clearInterval(checkMonsterInterval)
+                        $("#bom").append('<img src="explode2.png" class= bom-' + h + '  ></div>');
+                        $(".bom-"+ h).addClass("bom");
+                        $(".bom-"+ h).css({
+                                top : parseInt(airplantop) + 125,
+                                left : airplanleft
+                            })
+                        $("html").css({
+                            animation: "shake 0.5s"
+                        })
+                        setTimeout(function(){
+                            $("html").css({
+                            animation: ""
+                            })
+                            $(".bom-"+ h).hide();
+                        },1000)
+                        if(h == 1){
+                            localStorage.setItem("hearth1",h)
+
+                        }
+                        if(h == 2){
+                            localStorage.setItem("hearth2",h)
+
+                        }
+                        $(".hearth" + h).remove();
+                        if(h == 3){
+                            clearInterval(mons);
+                            clearInterval(clock);
+                            modalloos();
+                        }
+                    }
+                    // $(".monster" + u ).hide();
+                },100)
+                $(".monster" + u ).css({
+                    position: "absolute",
+                    top: "100px",
+                    left: ar[le] + "px",
+                    width: "85px"
+                }).animate({
+                    top : "900px",
+                },level,function(){
+                    $(".monster" + u ).hide();
+                })
+            }
+            var mons = setInterval(function(){
+                makemonster();
+
+            },4000)
                 $(document).keydown(function(e){
                     var code = e.keyCode;
-                    
+                    console.log(e.keyCode);
                     if(code == 38){
                         scale +=  -0.1;
-                        rotate = 100;
+                        rotate = 120;
+                        ml += -50;
                     }
                     if(code == 40){
                         scale +=  0.1;
-                        rotate = 120;
+                        rotate = 100;
+                        ml += 50;
                     }
                     if(code == 39){
-                        marginleft += -20;
+                        marginleft += -45;
                         rotatey = 10;
+                        ml += -20;
                     }
                     if(code == 37){
-                        marginleft += 20;
+                        marginleft += 45;
                         rotatey = -10;
-                    }
+                        ml += 20;
 
-                    console.log(marginleft);
+                    }   
+                    if(code == 32 && sh == true ){
+                        n++;
+                        var s = n + "000";
+                        // console.log(n + "shot");
+                        $("#aa").append('<div class=shot-' + n + ' ></div>');
+                        $("div.shot-" + n).addClass("shot");
+                        shot(n,ml);
+                        numgun(n);
+                        sh = false
+                        setTimeout(function(){
+                            sh = true
+                        },300)
+                    }
                     $("#img").css({
                         "transform": "rotateX(" + rotate + "deg) scale(" + scale + ") rotateY(" + rotatey + "deg)", 
                         "margin-left" : "calc(42% - " + marginleft + "px)"
-
                     })
-
                 })
                 $(document).keyup(function(e){
-                    console.log(e.keyCode);
                     var code = e.keyCode;
                     var rotate;
 
@@ -78,10 +599,104 @@
     </script>
 </head>
 <body>
-    <div id='jet'>
-        <div id='je'>
-            <img id='img' src="jet.png" alt="">
+    <div>
+        <div id="animate-area" >
+        <div id="monster">
+
+        </div>
+        <div id="bombom">
+
+        </div>
+        <div id="bom">
+
+        </div>
+
+        <div style="position:relative">
+            <div id="one-header">
+            </div>
+            <div id="two-header">
+            </div>
+            <div id="left">
+            <div style="position:relative">
+                <img id="gun" src="gun.png">
+                <p  id="numgun">40</p>
+                <img id="killimg" src="5.png">
+                <p id="numkill">5</p>
+            </div>
+            </div>
+
+            <div id="right">
+            <p id="level">Level 1</p>
+            <div style="position:relative" id="hearths">
+                <img class="hearth3" src="Hearth.png">
+                <img class="hearth2" src="Hearth.png">
+                <img class="hearth1" src="Hearth.png">
+            </div>    
+            </div>
+            <p id="time"></p>
+        </div>
+        <div id='jet'>
+            <div id='je'>
+                <img id='img' src="jet.png" alt="">
+            </div>
+        </div>
+
+        <div id="aa">
         </div>
     </div>
+    </div>
+    <div id="modal-win">
+        <div class="modal-header">
+            WIIINNN
+        </div>
+        <div class="modal-content">
+
+            <p style="text-decoration:underline" class="first">
+                YOUR ARE WINNNERRR 
+            </p>
+
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn">
+                <a style="text-decoration:none" href="jet.html">PLAY AGAIN</a>
+            </button>
+        </div>
+    </div>
+    <div id="modal-loos" >
+            <div class="modal-header">
+                <p style="text-decoration:underline">
+                    YOUR ARE A BIG LOOSER
+                </p>    
+            </div>
+            <div class="modal-content">
+
+            <p class="first" >
+                your hearth left  : 
+            </p>
+            <p  style="display:inline" id="loos-hearth">
+
+            </p>
+            <br>
+
+            <p class="p">
+                your shot left  : 
+            </p>
+            <p class="p" id="loos-shot">
+                
+            </p>
+            <br>
+            <p class="p">
+                your monster left  to kill : 
+            </p>
+            <p class="p" id="loos-kill">
+            </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn">
+                    <a style="text-decoration:none" href="jet.html">PLAY AGAIN</a>
+                </button>
+            </div>
+        </div>
 </body>
 </html>
